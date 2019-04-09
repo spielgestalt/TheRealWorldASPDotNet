@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheRealWorldASPDotNet", "TheRealWorldASPDotNet\TheRealWorldASPDotNet.csproj", "{DFE0F5D7-5C05-4236-AA77-35736677A222}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFE0F5D7-5C05-4236-AA77-35736677A222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE0F5D7-5C05-4236-AA77-35736677A222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE0F5D7-5C05-4236-AA77-35736677A222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE0F5D7-5C05-4236-AA77-35736677A222}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
