@@ -7,6 +7,7 @@ namespace TheRealWorldASPDotNet.Services
     public class PagesDbContext: DbContext
     {
         public DbSet<Page> Pages { get; set; }
+        public DbSet<Content> Contents { get; set; }
 
         public PagesDbContext(DbContextOptions<PagesDbContext> options): base(options) {
             Database.EnsureCreated();

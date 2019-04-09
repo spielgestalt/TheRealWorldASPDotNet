@@ -1,19 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
-
+using Newtonsoft.Json;
 namespace TheRealWorldASPDotNet.Models
 {
-    public class ContentElement
+    [Serializable]
+    public class Content
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]
-        public string Content { get; set; }
+        public string TextContent { get; set; }
 
-        [Required]
-        public virtual Page Parent { get; set; }
+        [ForeignKey("Page")]
+        public Guid PageId { get; set; }
+
+        [JsonIgnore]
+        public Page Page { get; set; }
     }
 }

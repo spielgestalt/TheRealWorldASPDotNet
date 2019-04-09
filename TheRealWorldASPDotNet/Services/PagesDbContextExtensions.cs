@@ -18,7 +18,22 @@ namespace TheRealWorldASPDotNet.Services
                     Title = "impress"
                 }
             };
+
+
             context.AddRange(pages);
+            Page homePage = pages.First();
+            var contents = new List<Content>()
+            {
+                new Content() {
+                    Page = homePage,
+                    TextContent = "Lorem ipum 1"
+                },
+                new Content() {
+                    Page = homePage,
+                    TextContent = "Something with Homepage"
+                }
+            };
+            context.AddRange(contents);
             context.SaveChanges();
         }
     }

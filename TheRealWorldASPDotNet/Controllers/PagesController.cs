@@ -6,19 +6,24 @@ using System.Net;
 using System.Web;
 using System.Linq;
 using System;
+using Microsoft.Extensions.Logging;
 
-[Serializable]
-public class PageModel { 
-    public string Title { get; set; }
-    public string Parent { get; set; }
-}
 namespace TheRealWorldASPDotNet.Controllers {
     [Route("api/[controller]")]
     public class PagesController : Controller {
-        private PagesDbContext _context;
+        private readonly PagesDbContext _context;
+        private readonly ILogger _logger;
+        [Serializable]
+        public class PageModel
+        {
+            public string Title { get; set; }
+            public string Parent { get; set; }
+        }
 
-        public PagesController(PagesDbContext context) {
+
+        public PagesController(PagesDbContext context, ILogger<PagesController> logger) {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -35,6 +40,7 @@ namespace TheRealWorldASPDotNet.Controllers {
                 return BadRequest(this.BuildJsonError("not found", $"The {id.ToString()} could not be found."));
             }
             //_context.Entry(result).Reference(b => b.Parent).Load();
+            _context.Entry(result).Collection(b => b.ContentElements).Load();
 
             return Ok(result);
         }

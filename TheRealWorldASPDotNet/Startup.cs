@@ -12,14 +12,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Microsoft.EntityFrameworkCore;
 using TheRealWorldASPDotNet.Services;
+using Microsoft.Extensions.Logging;
 
 namespace TheRealWorldASPDotNet
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly ILogger _logger;
+        public Startup(IConfiguration configuration, ILogger<Startup> logger)
         {
             Configuration = configuration;
+            _logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -35,7 +38,7 @@ namespace TheRealWorldASPDotNet
             });
 
             services.AddRouting(options => options.LowercaseUrls = true);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //Database Setup
             var connectionString = "Server=localhost;Database=TheRealWorldDB;User Id=sa;Password=Passw0rd!";
