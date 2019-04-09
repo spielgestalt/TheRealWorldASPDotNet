@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using Microsoft.EntityFrameworkCore;
+using TheRealWorldASPDotNet.Services;
+
 namespace TheRealWorldASPDotNet
 {
     public class Startup
@@ -33,10 +36,14 @@ namespace TheRealWorldASPDotNet
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //Database Setup
+            var connectionString = "Server=localhost;Database=TheRealWorldDB;User Id=sa;Password=Passw0rd!";
+            services.AddDbContext<PagesDbContext>(o => o.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, PagesDbContext pagesDbContext)
         {
             if (env.IsDevelopment())
             {
@@ -51,7 +58,7 @@ namespace TheRealWorldASPDotNet
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            pagesDbContext.CreateSeedData();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
