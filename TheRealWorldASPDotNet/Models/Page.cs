@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TheRealWorldASPDotNet.Models
 {
+    [Serializable]
     public class Page
     {
         [Key]
@@ -14,7 +15,7 @@ namespace TheRealWorldASPDotNet.Models
         public Guid Id { get; set; }
 
         [Required]
-        //[MaxLength(255)]
+        [MaxLength(255)]
         public string Title { get; set; }
 
         public virtual Page Parent { get; set; }

@@ -11,9 +11,9 @@ namespace TheRealWorldASPDotNet.Models
         public Guid Id { get; set; }
 
         [Required]
-        //[MaxLength(255)]
         public string Content { get; set; }
 
+        [Required]
         public virtual Page Parent { get; set; }
     }
 }

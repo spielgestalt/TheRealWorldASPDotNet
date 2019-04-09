@@ -34,8 +34,8 @@ namespace TheRealWorldASPDotNet
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddRouting(options => options.LowercaseUrls = true);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //Database Setup
             var connectionString = "Server=localhost;Database=TheRealWorldDB;User Id=sa;Password=Passw0rd!";
@@ -59,6 +59,7 @@ namespace TheRealWorldASPDotNet
             app.UseStaticFiles();
             app.UseCookiePolicy();
             pagesDbContext.CreateSeedData();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
