@@ -3,6 +3,7 @@ A Real World REST API Example in ASP.NET
 ## Development Machine Specs
 * MacOS Mojave 10.14.*
 * [Visual Studio Community for Mac Version 8.0.*] (https://visualstudio.microsoft.com/de/vs/mac/)
+* [.NET SDK 2.2](https://dotnet.microsoft.com/download)
 * [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 * [Azure Data Studio for Mac](https://docs.microsoft.com/de-de/sql/azure-data-studio/download?view=sql-server-2017)
 * [Kitura](https://www.kitura.io/app.html)
